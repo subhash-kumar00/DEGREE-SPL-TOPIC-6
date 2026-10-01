@@ -142,7 +142,7 @@
           <h2 class="text-2xl sm:text-3xl font-black text-cyan-400 mb-1" id="resultHeaderTitle">പരീക്ഷാ ഫലം (Exam Result)</h2>
           <p class="text-sm text-slate-400 mb-1" id="resultCandidateInfo"></p>
           <span id="resultSubBadge" class="inline-block text-[11px] text-cyan-400 bg-cyan-950/60 px-3 py-1 rounded-full border border-cyan-800">
-            ✓ ഫലം പ്രൊഫൈൽ ഹിസ്റ്ററിയിൽ രേഖപ്പെടുത്തിയിട്ടുണ്ട്
+            ✓ ഫലം ഫയർബേസ് പ്രൊഫൈൽ ഹിസ്റ്ററിയിൽ രേഖപ്പെടുത്തിയിട്ടുണ്ട്
           </span>
         </div>
 
@@ -176,11 +176,11 @@
           </div>
         </div>
 
-        <div id="sheetStatus" class="text-xs text-cyan-400 animate-pulse">സ്കോർ ഗൂഗിൾ ഷീറ്റിലേക്ക് രേഖപ്പെടുത്തുന്നു...</div>
+        <div id="sheetStatus" class="text-xs text-cyan-400 animate-pulse">സ്കോർ ഫയർബേസിലേക്ക് രേഖപ്പെടുത്തുന്നു...</div>
 
         <!-- 8 Mark Cut-off Warning Box -->
         <div id="pdfLockNotice" class="hidden max-w-md mx-auto p-3.5 bg-rose-950/40 border border-rose-800/80 rounded-xl text-xs text-rose-300">
-          ⚠️ <strong>ശ്രദ്ധിക്കുക:</strong> ഔദ്യോഗിക നോട്ടുകൾ PDF ഡൗൺലോഡ് ചെയ്യാൻ കുറഞ്ഞത് <strong>8 മാർക്ക്</strong> നേടിയിരിക്കണം. നിങ്ങളുടെ നിലവിലെ സ്കോർ 8-ൽ താഴെയാണ്.
+          ⚠️️ <strong>ശ്രദ്ധിക്കുക:</strong> ഔദ്യോഗിക നോട്ടുകൾ PDF ഡൗൺലോഡ് ചെയ്യാൻ കുറഞ്ഞത് <strong>8 മാർക്ക്</strong> നേടിയിരിക്കണം. നിങ്ങളുടെ നിലവിലെ സ്കോർ 8-ൽ താഴെയാണ്.
         </div>
 
         <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
@@ -224,17 +224,17 @@
       </div>
     </div>
 
-    <!-- Leaderboard Modal -->
+    <!-- Leaderboard Modal (Firebase Native) -->
     <div id="leaderboardModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
       <div class="bg-slate-800 border border-slate-700 rounded-2xl max-w-xl w-full p-6 shadow-2xl flex flex-col max-h-[85vh]">
         <div class="flex items-center justify-between border-b border-slate-700 pb-4 mb-4">
           <div>
-            <h3 class="text-xl font-bold text-cyan-400">ലൈവ് റാങ്ക് ലിസ്റ്റ് (Google Sheet)</h3>
+            <h3 class="text-xl font-bold text-cyan-400">ലൈവ് റാങ്ക് ലിസ്റ്റ് (Live Ranking)</h3>
             <p class="text-xs text-slate-400">ആദ്യ ശ്രമത്തിലെ സ്കോർ അടിസ്ഥാനമാക്കി ക്രമീകരിച്ചത്</p>
           </div>
           <button type="button" onclick="closeLeaderboard()" class="text-slate-400 hover:text-white text-2xl font-bold">&times;</button>
         </div>
-        <div id="leaderboardLoading" class="py-10 text-center text-sm text-slate-400">ഗൂഗിൾ ഷീറ്റിൽ നിന്നും റാങ്ക് ലിസ്റ്റ് ശേഖരിക്കുന്നു...</div>
+        <div id="leaderboardLoading" class="py-10 text-center text-sm text-slate-400">ഫയർബേസിൽ നിന്നും റാങ്ക് ലിസ്റ്റ് ശേഖരിക്കുന്നു...</div>
         <div class="flex-1 overflow-y-auto custom-scroll pr-1 hidden" id="leaderboardTableWrapper">
           <table class="w-full text-left text-sm">
             <thead class="text-xs uppercase bg-slate-900/80 text-slate-400 sticky top-0">
@@ -270,12 +270,11 @@
   </main>
 
   <footer class="text-center py-3 text-[11px] text-slate-500 border-t border-slate-800">
-    NEP 2020: സ്കൂൾ വിദ്യാഭ്യാസ ഘടന (സെറ്റ് 6)[cite: 24] | PSC Model Exam
+    NEP 2020: സ്കൂൾ വിദ്യാഭ്യാസ ഘടന (സെറ്റ് 6) | PSC Model Exam
   </footer>
 
   <script>
-    let GOOGLE_SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbztE9bExjlH5a9Y_O8pU9CzVZy5zl-wzycDISurGzxqwuWB71Nxquzpg00Ocf2QR9Zb/exec";
-    const QUIZ_SHEET_NAME = "NEP 2020 സ്കൂൾ വിദ്യാഭ്യാസ ഘടന - സെറ്റ് 6";
+    const FIREBASE_DB_URL = "https://sk-psc-portal-default-rtdb.asia-southeast1.firebasedatabase.app";
     let ORIGINAL_PDF_URL = "https://docs.google.com/document/d/YOUR_GOOGLE_DOC_ID/export?format=pdf";
     let examTitle = "NEP 2020 സ്കൂൾ വിദ്യാഭ്യാസ ഘടന - സെറ്റ് 6";
 
@@ -284,151 +283,151 @@
         q: "ദേശീയ വിദ്യാഭ്യാസ നയം 2020 (NEP 2020) പ്രകാരം സ്കൂൾ വിദ്യാഭ്യാസത്തിൽ നിലവിലുള്ള 10+2 ഘടനയ്ക്ക് പകരം വന്ന പുതിയ ഘടന ഏതാണ്?",
         options: ["5 + 3 + 4 + 2", "4 + 4 + 4 + 3", "8 + 4 + 3", "5 + 3 + 3 + 4"],
         ans: 3,
-        exp: "പഴയ 10+2 സമ്പ്രദായത്തിന് പകരം 3 മുതൽ 18 വയസ്സുവരെയുള്ള കുട്ടികളെ ഉൾക്കൊള്ളിച്ച് 5+3+3+4 എന്ന പുതിയ പാഠ്യപദ്ധതി, പെഡഗോഗിക്കൽ ഘടനയാണ് NEP 2020 വിഭാവനം ചെയ്യുന്നത്[cite: 24]."
+        exp: "പഴയ 10+2 സമ്പ്രദായത്തിന് പകരം 3 മുതൽ 18 വയസ്സുവരെയുള്ള കുട്ടികളെ ഉൾക്കൊള്ളിച്ച് 5+3+3+4 എന്ന പുതിയ പാഠ്യപദ്ധതി, പെഡഗോഗിക്കൽ ഘടനയാണ് NEP 2020 വിഭാവനം ചെയ്യുന്നത്."
       },
       {
         q: "NEP 2020-ന്റെ 5+3+3+4 ഘടനയിൽ 'ഫൗണ്ടേഷണൽ സ്റ്റേജ്' (Foundational Stage) ഏത് പ്രായപരിധിയിലുള്ള കുട്ടികളെയാണ് ഉൾക്കൊള്ളുന്നത്?",
         options: ["8 മുതൽ 11 വയസ്സ് വരെ", "6 മുതൽ 10 വയസ്സ് വരെ", "3 മുതൽ 8 വയസ്സ് വരെ", "11 മുതൽ 14 വയസ്സ് വരെ"],
         ans: 2,
-        exp: "ഫൗണ്ടേഷണൽ സ്റ്റേജിൽ 3 വർഷത്തെ പ്രീ-സ്കൂൾ/അങ്കണവാടിയും (3-6 വയസ്സ്), 2 വർഷത്തെ പ്രൈമറി സ്കൂളും (1, 2 ക്ലാസുകൾ - 6-8 വയസ്സ്) ഉൾപ്പെടുന്നു[cite: 24]."
+        exp: "ഫൗണ്ടേഷണൽ സ്റ്റേജിൽ 3 വർഷത്തെ പ്രീ-സ്കൂൾ/അങ്കണവാടിയും (3-6 വയസ്സ്), 2 വർഷത്തെ പ്രൈമറി സ്കൂളും (1, 2 ക്ലാസുകൾ - 6-8 വയസ്സ്) ഉൾപ്പെടുന്നു."
       },
       {
         q: "NEP 2020-ലെ ഫൗണ്ടേഷണൽ സ്റ്റേജിനെ സംബന്ധിച്ച താഴെ പറയുന്ന പ്രസ്താവനകളിൽ ശരിയായവ ഏവ?\n1. ഫൗണ്ടേഷണൽ ഘട്ടം 3 മുതൽ 8 വയസ്സുവരെയുള്ള കുട്ടികളെ ഉൾക്കൊള്ളുന്ന 5 വർഷത്തെ ഒറ്റ ബ്ലോക്കാണ് .\n2. ഈ ഘട്ടത്തിൽ കുട്ടികളെ എല്ലാ മാസവും ഗ്രേഡിംഗ് പരീക്ഷകൾക്ക് നിർബന്ധമായി വിധേയമാക്കണം .\n3. അങ്കണവാടികളും ബാൽവതികളും ഒന്നാം ക്ലാസും രണ്ടാം ക്ലാസും ചേർന്നതാണ് ഫൗണ്ടേഷണൽ ഘട്ടം .",
         options: ["1 ഉം 3 ഉം ശരിയാണ്", "2, 3 ശരിയാണ്", "1, 2 ശരിയാണ്", "1, 2, 3 ശരിയാണ്"],
         ans: 0,
-        exp: "രണ്ടാമത്തെ പ്രസ്താവന തെറ്റാണ്[cite: 24]. ഫൗണ്ടേഷണൽ ഘട്ടത്തിൽ പരീക്ഷകളില്ലാതെ കളികളിലൂടെയുള്ള പഠനമാണ് വിഭാവനം ചെയ്യുന്നത്[cite: 24]. 1, 3 ശരിയാണ്[cite: 24]."
+        exp: "രണ്ടാമത്തെ പ്രസ്താവന തെറ്റാണ്. ഫൗണ്ടേഷണൽ ഘട്ടത്തിൽ പരീക്ഷകളില്ലാതെ കളികളിലൂടെയുള്ള പഠനമാണ് വിഭാവനം ചെയ്യുന്നത്. 1, 3 ശരിയാണ്."
       },
       {
         q: "പുതിയ വിദ്യാഭ്യാസ ഘടനയിലെ 'പ്രിപ്പറേറ്ററി സ്റ്റേജ്' (Preparatory Stage) ഉൾക്കൊള്ളുന്ന ക്ലാസുകൾ ഏതെല്ലാമാണ്?",
         options: ["1 മുതൽ 3 വരെയുള്ള ക്ലാസുകൾ", "3 മുതൽ 5 വരെയുള്ള ക്ലാസുകൾ", "6 മുതൽ 8 വരെയുള്ള ക്ലാസുകൾ", "9 മുതൽ 12 വരെയുള്ള ക്ലാസുകൾ"],
         ans: 1,
-        exp: "8 മുതൽ 11 വയസ്സുവരെയുള്ള കുട്ടികൾ പഠിക്കുന്ന 3 മുതൽ 5 വരെയുള്ള ക്ലാസുകളാണ് പ്രിപ്പറേറ്ററി ഘട്ടത്തിൽ വരുന്നത്[cite: 24]."
+        exp: "8 മുതൽ 11 വയസ്സുവരെയുള്ള കുട്ടികൾ പഠിക്കുന്ന 3 മുതൽ 5 വരെയുള്ള ക്ലാസുകളാണ് പ്രിപ്പറേറ്ററി ഘട്ടത്തിൽ വരുന്നത്."
       },
       {
         q: "മിഡിൽ സ്റ്റേജിന്റെ (ക്ലാസ് 6-8) സവിശേഷതകളെ സംബന്ധിച്ച പ്രസ്താവനകളിൽ ശരിയായവ ഏവ?\n1. മിഡിൽ സ്റ്റേജ് 15 മുതൽ 18 വയസ്സുവരെയുള്ള കൗമാരക്കാരായ വിദ്യാർത്ഥികൾക്കായിട്ടുള്ളതാണ് .\n2. ശാസ്ത്രം, ഗണിതം, സാമൂഹിക ശാസ്ത്രം, മാനവിക വിഷയങ്ങൾ എന്നിവയിൽ പരീക്ഷണാത്മക പഠനത്തിന് പ്രാധാന്യം നൽകുന്നു .\n3. വിദ്യാർത്ഥികൾക്ക് മരപ്പണി, ഇലക്ട്രിക് വർക്ക് തുടങ്ങിയ തൊഴിൽ കരകൗശലങ്ങളും കോഡിംഗും ഇവിടെ പരിചയപ്പെടുത്തുന്നു .",
         options: ["1 ഉം 3 ഉം ശരിയാണ്", "2, 3 ശരിയാണ്", "1, 2 ശരിയാണ്", "1, 2, 3 ശരിയാണ്"],
         ans: 1,
-        exp: "ഒന്നാമത്തെ പ്രസ്താവന തെറ്റാണ്[cite: 24]. മിഡിൽ സ്റ്റേജ് 11 മുതൽ 14 വയസ്സുവരെയുള്ള കുട്ടികൾക്കാണ് (15-18 സെക്കൻഡറി സ്റ്റേജാണ്)[cite: 24]. 2, 3 ശരിയാണ്[cite: 24]."
+        exp: "ഒന്നാമത്തെ പ്രസ്താവന തെറ്റാണ്. മിഡിൽ സ്റ്റേജ് 11 മുതൽ 14 വയസ്സുവരെയുള്ള കുട്ടികൾക്കാണ് (15-18 സെക്കൻഡറി സ്റ്റേജാണ്). 2, 3 ശരിയാണ്."
       },
       {
         q: "NEP 2020-ലെ സ്കൂൾ ഘടനയിൽ 'മിഡിൽ സ്റ്റേജ്' (Middle Stage) ഏത് പ്രായത്തിലുള്ള വിദ്യാർത്ഥികൾക്കായി രൂപകൽപ്പന ചെയ്തതാണ്?",
         options: ["11 മുതൽ 14 വയസ്സ് വരെ", "8 മുതൽ 11 വയസ്സ് വരെ", "14 മുതൽ 18 വയസ്സ് വരെ", "6 മുതൽ 9 വയസ്സ് വരെ"],
         ans: 0,
-        exp: "6 മുതൽ 8 വരെയുള്ള ക്ലാസുകൾ ഉൾപ്പെടുന്ന മിഡിൽ സ്റ്റേജ് 11 മുതൽ 14 വയസ്സുവരെയുള്ള കുട്ടികൾക്കായാണ് വിഭാവനം ചെയ്തിട്ടുള്ളത്[cite: 24]."
+        exp: "6 മുതൽ 8 വരെയുള്ള ക്ലാസുകൾ ഉൾപ്പെടുന്ന മിഡിൽ സ്റ്റേജ് 11 മുതൽ 14 വയസ്സുവരെയുള്ള കുട്ടികൾക്കായാണ് വിഭാവനം ചെയ്തിട്ടുള്ളത്."
       },
       {
         q: "ഹൈസ്കൂളും ഹയർ സെക്കൻഡറിയും ഒരുമിപ്പിച്ച് 4 വർഷത്തെ ഒറ്റ ബ്ലോക്കാക്കി മാറ്റിയ 'സെക്കൻഡറി സ്റ്റേജിൽ' ഉൾപ്പെടുന്ന ക്ലാസുകൾ ഏവ?",
         options: ["8 മുതൽ 12 വരെയുള്ള ക്ലാസുകൾ", "10 മുതൽ 12 വരെയുള്ള ക്ലാസുകൾ", "11 ഉം 12 ഉം ക്ലാസുകൾ", "9 മുതൽ 12 വരെയുള്ള ക്ലാസുകൾ"],
         ans: 3,
-        exp: "14 മുതൽ 18 വയസ്സുവരെയുള്ള കുട്ടികളുടെ 9, 10, 11, 12 ക്ലാസുകളാണ് സെക്കൻഡറി സ്റ്റേജിൽ വരുന്നത്[cite: 24]."
+        exp: "14 മുതൽ 18 വയസ്സുവരെയുള്ള കുട്ടികളുടെ 9, 10, 11, 12 ക്ലാസുകളാണ് സെക്കൻഡറി സ്റ്റേജിൽ വരുന്നത്."
       },
       {
         q: "പ്രിപ്പറേറ്ററി സ്റ്റേജിലെ (ക്ലാസ് 3-5) പഠനരീതികളെ സംബന്ധിച്ച പ്രസ്താവനകളിൽ ശരിയായവ ഏവ?\n1. ലഘുവായ പാഠപുസ്തകങ്ങൾക്കൊപ്പം കണ്ടെത്തി പഠിക്കുന്ന സംവേദനാത്മക ക്ലാസ് റൂം അന്തരീക്ഷം ഉറപ്പാക്കുന്നു .\n2. ഈ ഘട്ടത്തിൽ വിദ്യാർത്ഥികൾ നിർബന്ധമായും ഒരു വിദേശ സർവ്വകലാശാലയുടെ സിലബസ് പഠിക്കേണ്ടതുണ്ട് .\n3. പ്രിപ്പറേറ്ററി സ്റ്റേജിൽ കുട്ടികൾക്ക് കളികളോ കായിക വിനോദങ്ങളോ പൂർണ്ണമായി നിരോധിച്ചിരിക്കുന്നു .",
         options: ["1, 2 ശരിയാണ്", "2, 3 ശരിയാണ്", "1 മാത്രം ശരിയാണ്", "3 മാത്രം ശരിയാണ്"],
         ans: 2,
-        exp: "2, 3 പ്രസ്താവനകൾ തെറ്റാണ്[cite: 24]. പ്രിപ്പറേറ്ററി ഘട്ടം കുട്ടികളിൽ ജിജ്ഞാസ വളർത്തുന്ന ലളിതവും സജീവവുമായ പഠനമാണ് നൽകുന്നത്[cite: 24]. അതിനാൽ 1 മാത്രം ശരി[cite: 24]."
+        exp: "2, 3 പ്രസ്താവനകൾ തെറ്റാണ്. പ്രിപ്പറേറ്ററി ഘട്ടം കുട്ടികളിൽ ജിജ്ഞാസ വളർത്തുന്ന ലളിതവും സജീവവുമായ പഠനമാണ് നൽകുന്നത്. അതിനാൽ 1 മാത്രം ശരി."
       },
       {
         q: "വിദ്യാഭ്യാസ സമ്പ്രദായത്തിന്റെ ഏറ്റവും ഉയർന്ന ദേശീയ മുൻഗണനയായി (Highest National Priority) NEP 2020 പ്രഖ്യാപിച്ചത് എന്തിനാണ്?",
         options: ["വിദേശ ഭാഷാ പഠനം", "ഡിജിറ്റൽ ക്ലാസ് മുറികൾ", "അടിസ്ഥാന സാക്ഷരതയും സംഖ്യാജ്ഞാനവും (FLN)", "കമ്പ്യൂട്ടർ കോഡിംഗ്"],
         ans: 2,
-        exp: "എല്ലാ കുട്ടികളും പ്രൈമറി സ്കൂൾ തലത്തിൽ തന്നെ വായിക്കാനും എഴുതാനും അടിസ്ഥാന കണക്കുകൾ ചെയ്യാനും പ്രാപ്തരാകുക (FLN) എന്നതാണ് ഏറ്റവും ഉയർന്ന മുൻഗണന[cite: 24]."
+        exp: "എല്ലാ കുട്ടികളും പ്രൈമറി സ്കൂൾ തലത്തിൽ തന്നെ വായിക്കാനും എഴുതാനും അടിസ്ഥാന കണക്കുകൾ ചെയ്യാനും പ്രാപ്തരാകുക (FLN) എന്നതാണ് ഏറ്റവും ഉയർന്ന മുൻഗണന."
       },
       {
         q: "സെക്കൻഡറി സ്റ്റേജിലെ (ക്ലാസ് 9-12) വിഷയ തിരഞ്ഞെടുപ്പിനെ സംബന്ധിച്ച പ്രസ്താവനകളിൽ ശരിയായവ ഏവ?\n1. സയൻസ് പഠിക്കുന്ന ഒരു വിദ്യാർത്ഥിക്ക് കൊമേഴ്സ് വിഷയങ്ങളോ സംഗീതമോ പഠിക്കാൻ യാതൊരു അനുവാദവുമില്ല .\n2. വിഷയങ്ങൾ തമ്മിലുള്ള പരമ്പരാഗത മതിലുകൾ ഇല്ലാതാക്കി സ്വന്തം താല്പര്യത്തിനനുസരിച്ച് വിഷയങ്ങൾ തിരഞ്ഞെടുക്കാൻ അവസരമുണ്ട് .\n3. സെക്കൻഡറി തലത്തിൽ പരീക്ഷകൾ പൂർണ്ണമായി ഒഴിവാക്കി നറുക്കെടുപ്പിലൂടെയാണ് സർട്ടിഫിക്കറ്റ് നൽകുന്നത് .",
         options: ["1, 2 ശരിയാണ്", "1, 3 ശരിയാണ്", "3 മാത്രം ശരിയാണ്", "2 മാത്രം ശരിയാണ്"],
         ans: 3,
-        exp: "1, 3 പ്രസ്താവനകൾ തെറ്റാണ്[cite: 24]. മൾട്ടി-ഡിസിപ്ലിനറി സ്വാതന്ത്ര്യം നൽകുന്നതിനൊപ്പം ബോർഡ് പരീക്ഷകളെ ലളിതമാക്കി ശേഷി അടിസ്ഥാനമാക്കിയുള്ള മൂല്യനിർണ്ണയമാണ് നടത്തുന്നത്[cite: 24]. അതിനാൽ 2 മാത്രം ശരി[cite: 24]."
+        exp: "1, 3 പ്രസ്താവനകൾ തെറ്റാണ്. മൾട്ടി-ഡിസിപ്ലിനറി സ്വാതന്ത്ര്യം നൽകുന്നതിനൊപ്പം ബോർഡ് പരീക്ഷകളെ ലളിതമാക്കി ശേഷി അടിസ്ഥാനമാക്കിയുള്ള മൂല്യനിർണ്ണയമാണ് നടത്തുന്നത്. അതിനാൽ 2 മാത്രം ശരി."
       },
       {
         q: "NEP 2020 പ്രകാരം ഓരോ കുട്ടിയും ഏത് ഗ്രേഡിൽ എത്തുമ്പോഴേക്കും അടിസ്ഥാന സാക്ഷരതയും സംഖ്യാജ്ഞാനവും (FLN) നേടിയിരിക്കണം?",
         options: ["ഗ്രേഡ് 8", "ഗ്രേഡ് 3", "ഗ്രേഡ് 5", "ഗ്രേഡ് 1"],
         ans: 1,
-        exp: "ഗ്രേഡ് 3 അവസാനിക്കുമ്പോഴേക്കും എല്ലാ കുട്ടികളും FLN കൈവരിച്ചിരിക്കണം എന്നാണ് പ്രാഥമിക ലക്ഷ്യം[cite: 24]. ഗ്രേഡ് 5 ഇതിന്റെ അന്തിമ പരിധിയാണ്[cite: 24]."
+        exp: "ഗ്രേഡ് 3 അവസാനിക്കുമ്പോഴേക്കും എല്ലാ കുട്ടികളും FLN കൈവരിച്ചിരിക്കണം എന്നാണ് പ്രാഥമിക ലക്ഷ്യം. ഗ്രേഡ് 5 ഇതിന്റെ അന്തിമ പരിധിയാണ്."
       },
       {
         q: "വിദ്യാഭ്യാസത്തിലെ 'ECCE' എന്ന ചുരുക്കപ്പേരിന്റെ പൂർണ്ണരൂപം എന്താണ്?",
         options: ["Early Childhood Care and Education", "Elementary Child Care and Education", "Early Compulsory Child Education", "Educational Child Care Evaluation"],
         ans: 0,
-        exp: "3 വയസ്സു മുതലുള്ള പ്രാരംഭ ബാല്യപരിപാലനവും വിദ്യാഭ്യാസവുമാണ് Early Childhood Care and Education (ECCE)[cite: 24]."
+        exp: "3 വയസ്സു മുതലുള്ള പ്രാരംഭ ബാല്യപരിപാലനവും വിദ്യാഭ്യാസവുമാണ് Early Childhood Care and Education (ECCE)."
       },
       {
         q: "അടിസ്ഥാന സാക്ഷരതയും സംഖ്യാജ്ഞാനവും (FLN) സംബന്ധിച്ച പ്രസ്താവനകളിൽ ശരിയായവ ഏവ?\n1. സുഗമമായി വായിക്കാനും എഴുതാനും അടിസ്ഥാന കണക്കുകൾ ചെയ്യാനുമുള്ള ശേഷിയാണ് FLN .\n2. പ്രാഥമിക തലത്തിൽ FLN കൈവരിക്കാത്ത കുട്ടിക്ക് ഭാവിയിലെ തുടർപഠനം ദുഷ്കരമായിത്തീരുമെന്ന് നയം ചൂണ്ടിക്കാട്ടുന്നു .\n3. ഗ്രേഡ് 3 ആകുമ്പോഴേക്കും എല്ലാ കുട്ടികളും ഈ ലക്ഷ്യം നേടിയിരിക്കണമെന്ന് നയം നിഷ്കർഷിക്കുന്നു .",
         options: ["1, 2, 3 ശരിയാണ്", "1, 2 ശരിയാണ്", "2, 3 ശരിയാണ്", "1, 3 ശരിയാണ്"],
         ans: 0,
-        exp: "FLN-ന്റെ നിർവ്വചനം, അതിന്റെ അനിവാര്യത, ഗ്രേഡ് 3 ലക്ഷ്യപരിധി എന്നിവയെക്കുറിച്ചുള്ള മൂന്ന് പ്രസ്താവനകളും ശരിയാണ്[cite: 24]."
+        exp: "FLN-ന്റെ നിർവ്വചനം, അതിന്റെ അനിവാര്യത, ഗ്രേഡ് 3 ലക്ഷ്യപരിധി എന്നിവയെക്കുറിച്ചുള്ള മൂന്ന് പ്രസ്താവനകളും ശരിയാണ്."
       },
       {
         q: "സാർവ്വത്രിക ബാല്യകാല പരിചരണവും വിദ്യാഭ്യാസവും (Universal ECCE) രാജ്യമൊട്ടാകെ കൈവരിക്കാൻ NEP 2020 നിശ്ചയിച്ചിട്ടുള്ള ലക്ഷ്യവർഷം ഏതാണ്?",
         options: ["2040", "2035", "2025", "2030"],
         ans: 3,
-        exp: "2030 ആകുമ്പോഴേക്കും എല്ലാ കുട്ടികൾക്കും ഗുണനിലവാരമുള്ള പ്രീ-സ്കൂൾ വിദ്യാഭ്യാസം ഉറപ്പാക്കാൻ നയം ലക്ഷ്യമിടുന്നു[cite: 24]."
+        exp: "2030 ആകുമ്പോഴേക്കും എല്ലാ കുട്ടികൾക്കും ഗുണനിലവാരമുള്ള പ്രീ-സ്കൂൾ വിദ്യാഭ്യാസം ഉറപ്പാക്കാൻ നയം ലക്ഷ്യമിടുന്നു."
       },
       {
         q: "ECCE (പ്രാരംഭ ബാല്യപരിപാലനവും വിദ്യാഭ്യാസവും) സംബന്ധിച്ച പ്രസ്താവനകളിൽ തെറ്റായവ ഏവ?\n1. പ്രാരംഭ ബാല്യപരിപാലനവും വിദ്യാഭ്യാസവും സ്വകാര്യ സ്കൂളുകൾക്ക് മാത്രമായി പരിമിതപ്പെടുത്തിയിരിക്കുന്നു .\n2. പ്രൈമറി സ്കൂളുകളോട് ചേർന്ന് പ്രവർത്തിക്കുന്ന അങ്കണവാടികൾ ECCE നടപ്പാക്കലിന്റെ ഭാഗമാണ് .\n3. ഒറ്റപ്പെട്ടുനിൽക്കുന്ന പ്രീ-സ്കൂളുകളെയും ബാൽവതികളെയും NEP 2020 അംഗീകരിക്കുന്നുണ്ട് .",
         options: ["1, 3 തെറ്റാണ്", "1 മാത്രം തെറ്റാണ്", "2 മാത്രം തെറ്റാണ്", "3 മാത്രം തെറ്റാണ്"],
         ans: 1,
-        exp: "ഒന്നാമത്തെ പ്രസ്താവന തെറ്റാണ്[cite: 24]. അങ്കണവാടികളും സർക്കാർ പ്രീ-സ്കൂളുകളും വഴി എല്ലാ സാധാരണക്കാരായ കുട്ടികൾക്കും ECCE ലഭ്യമാക്കാനാണ് നയം ലക്ഷ്യമിടുന്നത്[cite: 24]. 2, 3 ശരിയാണ്[cite: 24]."
+        exp: "ഒന്നാമത്തെ പ്രസ്താവന തെറ്റാണ്. അങ്കണവാടികളും സർക്കാർ പ്രീ-സ്കൂളുകളും വഴി എല്ലാ സാധാരണക്കാരായ കുട്ടികൾക്കും ECCE ലഭ്യമാക്കാനാണ് നയം ലക്ഷ്യമിടുന്നത്. 2, 3 ശരിയാണ്."
       },
       {
         q: "പാഠപുസ്തകങ്ങളിലെ നിർവ്വചനങ്ങൾ മനഃപാഠമാക്കുന്നതിന് പകരം 'എന്തുകൊണ്ട്', 'എങ്ങനെ' എന്ന് ചിന്തിക്കാൻ പ്രേരിപ്പിക്കുന്ന ഏത് ബോധനരീതിയാണ് സെക്കൻഡറി ഘട്ടത്തിൽ ശുപാർശ ചെയ്യുന്നത്?",
         options: ["പരീക്ഷാ പരിശീലനം", "മനഃപാഠമാക്കൽ രീതി", "വിമർശനാത്മക ചിന്തയും പര്യവേക്ഷണവും", "അധ്യാപക പ്രഭാഷണ രീതി"],
         ans: 2,
-        exp: "വിദ്യാർത്ഥികളിൽ ക്രിട്ടിക്കൽ തിങ്കിംഗും പ്രശ്നപരിഹാര ശേഷിയും വളർത്താനാണ് നയം ഊന്നൽ നൽകുന്നത്[cite: 24]."
+        exp: "വിദ്യാർത്ഥികളിൽ ക്രിട്ടിക്കൽ തിങ്കിംഗും പ്രശ്നപരിഹാര ശേഷിയും വളർത്താനാണ് നയം ഊന്നൽ നൽകുന്നത്."
       },
       {
         q: "ആദ്യമായി വിദ്യാർത്ഥികൾക്ക് മരപ്പണി, ഇലക്ട്രിക് വർക്ക്, ലോഹപ്പണി, കോഡിംഗ് തുടങ്ങിയ പ്രായോഗിക നൈപുണ്യങ്ങൾ പരിചയപ്പെടുത്തുന്നത് ഏത് ഘട്ടത്തിലാണ്?",
         options: ["പ്രീ-സ്കൂൾ സ്റ്റേജ്", "മിഡിൽ സ്റ്റേജ് (ക്ലാസ് 6-8)", "ഫൗണ്ടേഷണൽ സ്റ്റേജ്", "പ്രിപ്പറേറ്ററി സ്റ്റേജ്"],
         ans: 1,
-        exp: "ക്ലാസ് 6 മുതൽ 8 വരെയുള്ള മിഡിൽ ഘട്ടത്തിലാണ് കുട്ടികൾക്ക് തൊഴിൽ നൈപുണ്യങ്ങളും (Vocational Crafts) കോഡിംഗും ആദ്യമായി പരിചയപ്പെടുത്തുന്നത്[cite: 24]."
+        exp: "ക്ലാസ് 6 മുതൽ 8 വരെയുള്ള മിഡിൽ ഘട്ടത്തിലാണ് കുട്ടികൾക്ക് തൊഴിൽ നൈപുണ്യങ്ങളും (Vocational Crafts) കോഡിംഗും ആദ്യമായി പരിചയപ്പെടുത്തുന്നത്."
       },
       {
         q: "NEP 2020-ന്റെ ഘടനാപരമായ മാറ്റങ്ങളെ സംബന്ധിച്ച പ്രസ്താവനകളിൽ തെറ്റായവ ഏവ?\n1. പഴയ 10+2 സമ്പ്രദായത്തെ പരിഷ്കരിച്ചാണ് 5+3+3+4 ഘടന കൊണ്ടുവന്നത് .\n2. പുതിയ ഘടനയിൽ ആകെ സ്കൂൾ വിദ്യാഭ്യാസ കാലയളവ് 8 വർഷമായി ചുരുക്കി നിശ്ചയിച്ചു .\n3. മൂന്ന് വയസ്സുമുതൽ കുട്ടികളെ ഔപചാരിക സ്കൂൾ പഠന ചട്ടക്കൂടിന്റെ ഭാഗമാക്കുന്നു .",
         options: ["എല്ലാം തെറ്റാണ്", "3 മാത്രം തെറ്റാണ്", "2 മാത്രം തെറ്റാണ്", "1 മാത്രം തെറ്റാണ്"],
         ans: 2,
-        exp: "രണ്ടാമത്തെ പ്രസ്താവന തെറ്റാണ്[cite: 24]. സ്കൂൾ വിദ്യാഭ്യാസ കാലയളവ് ചുരുക്കിയിട്ടില്ല; പകരം പ്രീ-സ്കൂൾ ഉൾപ്പെടെ ആകെ 15 വർഷത്തെ പഠന ചട്ടക്കൂടാണിത് (5+3+3+4 = 15)[cite: 24]. 1, 3 ശരിയാണ്[cite: 24]."
+        exp: "രണ്ടാമത്തെ പ്രസ്താവന തെറ്റാണ്. സ്കൂൾ വിദ്യാഭ്യാസ കാലയളവ് ചുരുക്കിയിട്ടില്ല; പകരം പ്രീ-സ്കൂൾ ഉൾപ്പെടെ ആകെ 15 വർഷത്തെ പഠന ചട്ടക്കൂടാണിത് (5+3+3+4 = 15). 1, 3 ശരിയാണ്."
       },
       {
         q: "ലഘുവായ പാഠപുസ്തകങ്ങൾ അവതരിപ്പിക്കുന്നതിനൊപ്പം 'കളിയും കണ്ടെത്തലും' (Discovery-based learning) സമന്വയിപ്പിച്ചിട്ടുള്ള ഘട്ടം ഏതാണ്?",
         options: ["പ്രിപ്പറേറ്ററി സ്റ്റേജ്", "ഹയർ സെക്കൻഡറി സ്റ്റേജ്", "ഫൗണ്ടേഷണൽ സ്റ്റേജ്", "സെക്കൻഡറി സ്റ്റേജ്"],
         ans: 0,
-        exp: "ക്ലാസ് 3 മുതൽ 5 വരെയുള്ള പ്രിപ്പറേറ്ററി ഘട്ടത്തിലാണ് ലളിതമായ പുസ്തകങ്ങളിലൂടെയും ചർച്ചകളിലൂടെയും കുട്ടികൾ വിജ്ഞാനം നേടുന്നത്[cite: 24]."
+        exp: "ക്ലാസ് 3 മുതൽ 5 വരെയുള്ള പ്രിപ്പറേറ്ററി ഘട്ടത്തിലാണ് ലളിതമായ പുസ്തകങ്ങളിലൂടെയും ചർച്ചകളിലൂടെയും കുട്ടികൾ വിജ്ഞാനം നേടുന്നത്."
       },
       {
         q: "പാഠ്യപദ്ധതി പരിഷ്കാരങ്ങളെക്കുറിച്ചുള്ള താഴെ പറയുന്ന പ്രസ്താവനകളിൽ തെറ്റായവ ഏവ?\n1. ആർട്സ്, സയൻസ്, കൊമേഴ്സ് എന്നിവ തമ്മിലുള്ള കർശനമായ സ്ട്രീം വേർതിരിവുകൾ ഇല്ലാതാക്കി .\n2. പാഠ്യപദ്ധതി പ്രവർത്തനങ്ങളും പാഠ്യേതര പ്രവർത്തനങ്ങളും തമ്മിലുള്ള അന്തരം കുറച്ചു .\n3. പരീക്ഷകളിൽ പൂർണ്ണമായും വസ്തുതകൾ കാണാതെ പഠിച്ചുമാത്രം എഴുതാൻ വിദ്യാർത്ഥികളെ നിർബന്ധിക്കുന്നു .",
         options: ["1, 2 തെറ്റാണ്", "2 മാത്രം തെറ്റാണ്", "എല്ലാം തെറ്റാണ്", "3 മാത്രം തെറ്റാണ്"],
         ans: 3,
-        exp: "മൂന്നാമത്തെ പ്രസ്താവന തെറ്റാണ്[cite: 24]. കാണാതെ പഠിക്കുന്ന മനഃപാഠരീതിയെ (Rote learning) പൂർണ്ണമായി ഒഴിവാക്കാനാണ് NEP 2020 ആവശ്യപ്പെടുന്നത്[cite: 24]. 1, 2 ശരിയാണ്[cite: 24]."
+        exp: "മൂന്നാമത്തെ പ്രസ്താവന തെറ്റാണ്. കാണാതെ പഠിക്കുന്ന മനഃപാഠരീതിയെ (Rote learning) പൂർണ്ണമായി ഒഴിവാക്കാനാണ് NEP 2020 ആവശ്യപ്പെടുന്നത്. 1, 2 ശരിയാണ്."
       },
       {
         q: "സയൻസ്, കൊമേഴ്സ്, ആർട്സ് എന്നീ പരമ്പരാഗത വേർതിരിവുകൾ ഇല്ലാതെ ഫിസിക്സിനൊപ്പം ഹിസ്റ്ററിയോ സംഗീതമോ പഠിക്കാൻ അനുമതി നൽകുന്ന ഘട്ടം ഏതാണ്?",
         options: ["പ്രിപ്പറേറ്ററി സ്റ്റേജ്", "പ്രൈമറി സ്റ്റേജ്", "ഫൗണ്ടേഷണൽ സ്റ്റേജ്", "സെക്കൻഡറി സ്റ്റേജ്"],
         ans: 3,
-        exp: "9 മുതൽ 12 വരെയുള്ള സെക്കൻഡറി ഘട്ടത്തിലാണ് സ്ട്രീം വേർതിരിവുകൾ ഒഴിവാക്കി വിദ്യാർത്ഥികൾക്ക് ഇഷ്ടമുള്ള വിഷയങ്ങൾ സംയോജിപ്പിച്ചു പഠിക്കാനുള്ള സ്വാതന്ത്ര്യം നൽകുന്നത്[cite: 24]."
+        exp: "9 മുതൽ 12 വരെയുള്ള സെക്കൻഡറി ഘട്ടത്തിലാണ് സ്ട്രീം വേർതിരിവുകൾ ഒഴിവാക്കി വിദ്യാർത്ഥികൾക്ക് ഇഷ്ടമുള്ള വിഷയങ്ങൾ സംയോജിപ്പിച്ചു പഠിക്കാനുള്ള സ്വാതന്ത്ര്യം നൽകുന്നത്."
       },
       {
         q: "സ്കൂൾ തലങ്ങളിലെ പ്രായപരിധിയെ സംബന്ധിച്ച പ്രസ്താവനകളിൽ തെറ്റായവ ഏവ?\n1. ഫൗണ്ടേഷണൽ ഘട്ടത്തിൽ 10 മുതൽ 15 വയസ്സുവരെയുള്ള കുട്ടികളാണ് ഉൾപ്പെടുന്നത് .\n2. പ്രിപ്പറേറ്ററി ഘട്ടത്തിൽ 8 മുതൽ 11 വയസ്സുവരെയുള്ള കുട്ടികളാണ് ഉൾപ്പെടുന്നത് .\n3. സെക്കൻഡറി ഘട്ടത്തിൽ 5 മുതൽ 8 വയസ്സുവരെയുള്ള കുട്ടികളാണ് ഉൾപ്പെടുന്നത് .",
         options: ["1, 3 തെറ്റാണ്", "എല്ലാം തെറ്റാണ്", "2, 3 തെറ്റാണ്", "2 മാത്രം തെറ്റാണ്"],
         ans: 0,
-        exp: "1 (ഫൗണ്ടേഷണൽ സ്റ്റേജ് 3 മുതൽ 8 വയസ്സുവരെയാണ്), 3 (സെക്കൻഡറി സ്റ്റേജ് 14 മുതൽ 18 വയസ്സുവരെയാണ്) എന്നിവ തെറ്റാണ്[cite: 24]. 2 ശരിയാണ്[cite: 24]."
+        exp: "1 (ഫൗണ്ടേഷണൽ സ്റ്റേജ് 3 മുതൽ 8 വയസ്സുവരെയാണ്), 3 (സെക്കൻഡറി സ്റ്റേജ് 14 മുതൽ 18 വയസ്സുവരെയാണ്) എന്നിവ തെറ്റാണ്. 2 ശരിയാണ്."
       },
       {
         q: "സ്കൂൾ വിദ്യാഭ്യാസത്തിന്റെ ആകെ ദൈർഘ്യം 5+3+3+4 ഘടനയനുസരിച്ച് എത്ര വർഷമാണ്?",
         options: ["10 വർഷം", "12 വർഷം", "15 വർഷം", "14 വർഷം"],
         ans: 2,
-        exp: "3 വർഷത്തെ പ്രീ-സ്കൂളും 12 വർഷത്തെ സ്കൂൾ വിദ്യാഭ്യാസവും ചേർത്ത് ആകെ 15 വർഷത്തെ സ്കൂളിംഗ് ഘടനയാണിത് (5+3+3+4 = 15)[cite: 24]."
+        exp: "3 വർഷത്തെ പ്രീ-സ്കൂളും 12 വർഷത്തെ സ്കൂൾ വിദ്യാഭ്യാസവും ചേർത്ത് ആകെ 15 വർഷത്തെ സ്കൂളിംഗ് ഘടനയാണിത് (5+3+3+4 = 15)."
       },
       {
         q: "NEP 2020-ലെ സ്കൂൾ വിദ്യാഭ്യാസത്തെ സംബന്ധിച്ച താഴെ പറയുന്ന പ്രസ്താവനകളിൽ തെറ്റായവ ഏവ?\n1. സ്കൂളുകളിൽ കായിക വിദ്യാഭ്യാസവും കലകളും പൂർണ്ണമായി നിരോധിച്ചു .\n2. 5+3+3+4 ഘടന പ്രകാരം പ്രൈമറി വിദ്യാഭ്യാസം 12-ാം വയസ്സിൽ മാത്രമാണ് ആരംഭിക്കുന്നത് .\n3. മിഡിൽ സ്കൂൾ ഘട്ടത്തിൽ കുട്ടികൾക്ക് പുസ്തകങ്ങൾ തൊടാൻ അനുവാദമില്ല .",
         options: ["1, 3 തെറ്റാണ്", "1, 2 തെറ്റാണ്", "എല്ലാം തെറ്റാണ്", "2, 3 തെറ്റാണ്"],
         ans: 2,
-        exp: "മൂന്ന് പ്രസ്താവനകളും തെറ്റാണ്[cite: 24]. കായിക-കലാ സമന്വയമാണ് നയം മുന്നോട്ടുവെക്കുന്നത്; പ്രൈമറി തലം 6 വയസ്സിൽ തുടങ്ങുന്നു; മിഡിൽ ഘട്ടത്തിൽ ഔപചാരിക പഠനവും പ്രായോഗിക നൈപുണ്യങ്ങളും ഉണ്ട്[cite: 24]."
+        exp: "മൂന്ന് പ്രസ്താവനകളും തെറ്റാണ്. കായിക-കലാ സമന്വയമാണ് നയം മുന്നോട്ടുവെക്കുന്നത്; പ്രൈമറി തലം 6 വയസ്സിൽ തുടങ്ങുന്നു; മിഡിൽ ഘട്ടത്തിൽ ഔപചാരിക പഠനവും പ്രായോഗിക നൈപുണ്യങ്ങളും ഉണ്ട്."
       },
       {
         q: "ഫൗണ്ടേഷണൽ സ്റ്റേജിലെ 5 വർഷങ്ങളിൽ ബോധനശാസ്ത്രപരമായ പ്രധാന ശ്രദ്ധ കേന്ദ്രീകരിച്ചിരിക്കുന്നത് എന്തിലാണ്?",
         options: ["കഠിനമായ രേഖാമൂലമുള്ള പരീക്ഷകൾ", "കളികളിലൂടെയും പ്രവർത്തനങ്ങളിലൂടെയുമുള്ള പഠനം", "വിദേശ ഭാഷാ വ്യാകരണം", "കമ്പ്യൂട്ടർ പ്രോഗ്രാമിംഗ്"],
         ans: 1,
-        exp: "ഫൗണ്ടേഷണൽ സ്റ്റേജിൽ പരീക്ഷകളുടെ സമ്മർദ്ദമില്ലാതെ കളിയിലൂടെയും പ്രവർത്തനങ്ങളിലൂടെയും (Play-based and activity-based) പഠിക്കാനാണ് നയം അനുശാസിക്കുന്നത്[cite: 24]."
+        exp: "ഫൗണ്ടേഷണൽ സ്റ്റേജിൽ പരീക്ഷകളുടെ സമ്മർദ്ദമില്ലാതെ കളിയിലൂടെയും പ്രവർത്തനങ്ങളിലൂടെയും (Play-based and activity-based) പഠിക്കാനാണ് നയം അനുശാസിക്കുന്നത്."
       }
     ];
 
@@ -440,9 +439,9 @@
 
     const fontSizes = [
       { q: "text-sm sm:text-base" },
-      { text: "text-base sm:text-lg" },
-      { text: "text-lg sm:text-xl" },
-      { text: "text-xl sm:text-2xl" }
+      { q: "text-base sm:text-lg" },
+      { q: "text-lg sm:text-xl" },
+      { q: "text-xl sm:text-2xl" }
     ];
 
     let timeLeft = 25 * 60;
@@ -452,12 +451,16 @@
     const quizScreen = document.getElementById('quizScreen');
     const resultScreen = document.getElementById('resultScreen');
 
+    function cleanTitleForMatch(str) {
+      if (!str) return "";
+      return String(str).replace(/[\s\-_,.:;()\/\\|\[\]]+/g, '').toLowerCase();
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
       const urlParams = new URLSearchParams(window.location.search);
       const passedName = urlParams.get('name');
       const passedPhone = urlParams.get('phone');
       const passedTitle = urlParams.get('title');
-      const passedSheet = urlParams.get('sheetUrl');
       const passedPdf = urlParams.get('pdfUrl');
 
       if (passedName && passedName.trim() !== '') {
@@ -465,9 +468,7 @@
       } else {
         try {
           const storedUser = localStorage.getItem('sk_user_name');
-          if (storedUser && storedUser.trim() !== '') {
-            currentUser.name = storedUser.trim();
-          }
+          if (storedUser && storedUser.trim() !== '') currentUser.name = storedUser.trim();
         } catch (e) {}
       }
 
@@ -480,7 +481,6 @@
         document.getElementById('pdfExportExamTitle').innerText = `${examTitle} - ഉത്തര സൂചിക`;
       }
       
-      if (passedSheet) GOOGLE_SHEET_WEBAPP_URL = decodeURIComponent(passedSheet);
       if (passedPdf) ORIGINAL_PDF_URL = decodeURIComponent(passedPdf);
 
       const displayElem = document.getElementById('displayUser');
@@ -491,9 +491,7 @@
       }
 
       const motElem = document.getElementById('motivateName');
-      if (motElem) {
-        motElem.innerText = `ഹലോ, ${currentUser.name}! ✨`;
-      }
+      if (motElem) motElem.innerText = `ഹലോ, ${currentUser.name}! ✨`;
 
       const currentFullUrl = window.location.href.toLowerCase();
       const isReviewMode = currentFullUrl.includes("view=solution") || 
@@ -503,78 +501,64 @@
                            urlParams.get('view') === 'solution';
 
       if (isReviewMode) {
-        if (motivationScreen) {
-          motivationScreen.classList.add('hidden');
-          motivationScreen.style.setProperty('display', 'none', 'important');
-        }
-
-        if (quizScreen) {
-          quizScreen.classList.add('hidden');
-          quizScreen.classList.remove('flex');
-          quizScreen.style.setProperty('display', 'none', 'important');
-        }
-
-        if (resultScreen) {
-          resultScreen.classList.remove('hidden');
-          resultScreen.style.setProperty('display', 'block', 'important');
-        }
-
-        let prevScore = urlParams.get('score');
-        let prevCorrect = urlParams.get('correct');
-        let prevWrong = urlParams.get('wrong');
-        let prevSkipped = urlParams.get('skipped');
-
-        if ((!prevScore || prevScore === "0.00" || prevScore === "0") && currentUser.phone) {
-          try {
-            const histKey = `sk_history_${currentUser.phone}`;
-            const history = JSON.parse(localStorage.getItem(histKey) || '[]');
-            const matched = history.slice().reverse().find(h => 
-              h.title === examTitle || 
-              h.title === QUIZ_SHEET_NAME ||
-              (h.title && (h.title.includes("NEP 2020") || h.title.includes("സെറ്റ് 6")))
-            );
-            if (matched) {
-              prevScore = matched.score;
-              prevCorrect = matched.correct;
-              prevWrong = matched.wrong;
-              prevSkipped = matched.skipped;
-            }
-          } catch(e) {}
-        }
-
-        document.getElementById('resultHeaderTitle').innerText = "കഴിഞ്ഞ പരീക്ഷാ ഫലം & ഉത്തര സൂചിക";
-        document.getElementById('finalScore').innerText = prevScore !== null ? Number(prevScore).toFixed(2) : "0.00";
-        document.getElementById('correctCount').innerText = prevCorrect !== null ? prevCorrect : "0";
-        document.getElementById('wrongCount').innerText = prevWrong !== null ? prevWrong : "0";
-        document.getElementById('skipCount').innerText = prevSkipped !== null ? prevSkipped : "0";
-
-        const statusElem = document.getElementById('sheetStatus');
-        if (statusElem) statusElem.style.display = 'none';
-
-        const subBadge = document.getElementById('resultSubBadge');
-        if (subBadge) subBadge.innerText = "✓ നിങ്ങൾ മുമ്പ് പൂർത്തിയാക്കിയ പരീക്ഷയുടെ ഉത്തരസൂചിക താഴെ നൽകിയിരിക്കുന്നു";
-
-        const badge = document.getElementById('scoreMotivationBadge');
-        if (badge) {
-          badge.className = "max-w-xl mx-auto p-4 rounded-2xl border border-cyan-500/60 bg-cyan-950/40 text-cyan-300";
-          badge.innerHTML = `📖 <strong>മുൻപത്തെ സ്കോർ അവലോകനം</strong> (Previous Attempt Review Mode)`;
-        }
-
-        renderReviewOnlySolutions();
-        setTimeout(() => {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }, 100);
+        motivationScreen.style.setProperty('display', 'none', 'important');
+        quizScreen.style.setProperty('display', 'none', 'important');
+        resultScreen.classList.remove('hidden');
+        resultScreen.style.setProperty('display', 'block', 'important');
+        loadPreviousAttemptFromFirebase();
         return;
       }
     });
 
+    // 🌟 ഫയർബേസിൽ നിന്ന് മുൻപത്തെ അറ്റംപ്റ്റ് എടുത്തു കാണിക്കുന്നു
+    async function loadPreviousAttemptFromFirebase() {
+      let prevScore = 0, prevCorrect = 0, prevWrong = 0, prevSkipped = 0;
+
+      if (currentUser.phone && currentUser.phone !== "0000000000") {
+        try {
+          const res = await fetch(`${FIREBASE_DB_URL}/users_history/${currentUser.phone}.json`);
+          const data = await res.json();
+          if (data) {
+            const hList = Object.values(data);
+            const cleanT = cleanTitleForMatch(examTitle);
+            const matched = hList.slice().reverse().find(h => cleanTitleForMatch(h.title) === cleanT);
+            if (matched) {
+              prevScore = Number(matched.score || 0);
+              prevCorrect = matched.correct || 0;
+              prevWrong = matched.wrong || 0;
+              prevSkipped = matched.skipped || 0;
+            }
+          }
+        } catch(e) {}
+      }
+
+      document.getElementById('resultHeaderTitle').innerText = "കഴിഞ്ഞ പരീക്ഷാ ഫലം & ഉത്തര സൂചിക";
+      document.getElementById('finalScore').innerText = prevScore.toFixed(2);
+      document.getElementById('correctCount').innerText = prevCorrect;
+      document.getElementById('wrongCount').innerText = prevWrong;
+      document.getElementById('skipCount').innerText = prevSkipped;
+
+      const statusElem = document.getElementById('sheetStatus');
+      if (statusElem) statusElem.style.display = 'none';
+
+      const subBadge = document.getElementById('resultSubBadge');
+      if (subBadge) subBadge.innerText = "✓ നിങ്ങൾ മുമ്പ് പൂർത്തിയാക്കിയ പരീക്ഷയുടെ ഉത്തരസൂചിക താഴെ നൽകിയിരിക്കുന്നു";
+
+      const badge = document.getElementById('scoreMotivationBadge');
+      if (badge) {
+        badge.className = "max-w-xl mx-auto p-4 rounded-2xl border border-cyan-500/60 bg-cyan-950/40 text-cyan-300";
+        badge.innerHTML = `📖 <strong>മുൻപത്തെ സ്കോർ അവലോകനം</strong> (Previous Attempt Review Mode)`;
+      }
+
+      renderReviewOnlySolutions();
+      setTimeout(() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }, 100);
+    }
+
     document.getElementById('fullscreenToggleBtn').onclick = () => {
       if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen().catch(err => {
-          alert(`Error attempting full-screen: ${err.message}`);
-        });
+        document.documentElement.requestFullscreen().catch(err => alert(`Error: ${err.message}`));
       } else {
-        if (document.exitFullscreen) { document.exitFullscreen(); }
+        if (document.exitFullscreen) document.exitFullscreen();
       }
     };
 
@@ -594,7 +578,6 @@
     }
 
     function startExamDirectly() {
-      motivationScreen.classList.add('hidden');
       motivationScreen.style.setProperty('display', 'none', 'important');
       quizScreen.classList.remove('hidden');
       quizScreen.classList.add('flex');
@@ -616,9 +599,7 @@
         timeLeft--;
         const minutes = Math.floor(timeLeft / 60);
         const seconds = timeLeft % 60;
-        const mStr = minutes < 10 ? '0' + minutes : minutes;
-        const sStr = seconds < 10 ? '0' + seconds : seconds;
-        timerDisplay.innerText = `${mStr}:${sStr}`;
+        timerDisplay.innerText = `${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
 
         if (timeLeft <= 180) {
           timerDisplay.classList.remove('text-cyan-400');
@@ -670,11 +651,29 @@
       handleReportQuestion(currentIndex + 1);
     });
 
-    function handleReportQuestion(qNum) {
+    // 🌟 ചോദ്യത്തിലെ സംശയം നേരിട്ട് ഫയർബേസിലേക്ക് റിപ്പോർട്ട് ചെയ്യുന്നു
+    async function handleReportQuestion(qNum) {
       const reason = prompt(`ചോദ്യം ${qNum} ൽ എന്തെങ്കിലും തെറ്റുകൾ ഉണ്ടെങ്കിൽ ദയവായി താഴെ രേഖപ്പെടുത്തുക:`);
       if (reason && reason.trim()) {
-        sendReportQuestionToGoogleSheet(qNum, reason.trim());
-        alert(`നന്ദി! ചോദ്യം ${qNum} ലെ സംശയം വിജയകരമായി റിപ്പോർട്ട് ചെയ്തിരിക്കുന്നു.`);
+        try {
+          await fetch(`${FIREBASE_DB_URL}/reported_questions.json`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              exam: examTitle,
+              question: `ചോദ്യം ${qNum}`,
+              questionNumber: qNum,
+              reason: reason.trim(),
+              candidate: currentUser.name,
+              phone: currentUser.phone,
+              date: new Date().toISOString().split('T')[0],
+              timestamp: Date.now()
+            })
+          });
+          alert(`നന്ദി! ചോദ്യം ${qNum} ലെ സംശയം അഡ്മിൻ പാനലിലേക്ക് വിജയകരമായി റിപ്പോർട്ട് ചെയ്തു.`);
+        } catch (e) {
+          alert('റിപ്പോർട്ട് ചെയ്യുന്നതിൽ തടസ്സം നേരിട്ടു.');
+        }
       }
     }
 
@@ -707,12 +706,8 @@
     }
 
     document.getElementById('nextBtn').onclick = () => {
-      if (currentIndex < questionsData.length - 1) {
-        currentIndex++;
-        renderQuestion(currentIndex);
-      } else {
-        finishExam();
-      }
+      if (currentIndex < questionsData.length - 1) { currentIndex++; renderQuestion(currentIndex); }
+      else { finishExam(); }
     };
 
     document.getElementById('prevBtn').onclick = () => {
@@ -721,12 +716,8 @@
 
     document.getElementById('skipBtn').onclick = () => {
       userAnswers[currentIndex] = null;
-      if (currentIndex < questionsData.length - 1) {
-        currentIndex++;
-        renderQuestion(currentIndex);
-      } else {
-        finishExam();
-      }
+      if (currentIndex < questionsData.length - 1) { currentIndex++; renderQuestion(currentIndex); }
+      else { finishExam(); }
     };
 
     document.getElementById('finishMidBtn').onclick = () => {
@@ -780,25 +771,6 @@
         badge.innerHTML = `💪 <strong>തളരരുത്!</strong> നോട്ട്സുകൾ കൂടുതൽ ആഴത്തിൽ പഠിച്ച് വീണ്ടും പരിശീലിക്കുക.`;
       }
 
-      try {
-        if (currentUser && currentUser.phone && currentUser.phone !== "0000000000") {
-          const historyKey = `sk_history_${currentUser.phone}`;
-          let history = JSON.parse(localStorage.getItem(historyKey) || '[]');
-          
-          history = history.filter(h => !(h.title && (h.title === examTitle || h.title === QUIZ_SHEET_NAME)));
-          history.push({
-            title: examTitle,
-            sheetName: QUIZ_SHEET_NAME,
-            score: formattedScore,
-            correct: correct,
-            wrong: wrong,
-            skipped: skipped,
-            date: new Date().toLocaleDateString('ml-IN', { day: 'numeric', month: 'short', year: 'numeric' })
-          });
-          localStorage.setItem(historyKey, JSON.stringify(history));
-        }
-      } catch (err) {}
-
       const downloadBtn = document.getElementById('downloadOriginalNoteBtn');
       const lockNotice = document.getElementById('pdfLockNotice');
 
@@ -820,16 +792,60 @@
       resultScreen.style.setProperty('display', 'block', 'important');
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
-      sendResultToGoogleSheet({
+      sendResultToFirebase({
         name: currentUser.name,
         phone: currentUser.phone,
-        score: formattedScore,
+        score: scoreNum,
         correct: correct,
         wrong: wrong,
-        skipped: skipped,
-        wrongQuestions: wrongQuestionsList,
-        wrongQuestionsArray: wrongQuestionsList
+        skipped: skipped
       });
+    }
+
+    // 🌟 ഫയർബേസിലേക്ക് മാർക്കുകൾ തത്സമയം സേവ് ചെയ്യുന്നു
+    async function sendResultToFirebase(payload) {
+      const statusDiv = document.getElementById('sheetStatus');
+      if (!payload.phone || payload.phone === "0000000000") {
+        statusDiv.innerText = "✓ മാർക്ക് സ്ക്രീനിൽ ലഭ്യമാണ് (ലോഗിൻ ചെയ്തിട്ടില്ല).";
+        statusDiv.classList.remove('animate-pulse');
+        return;
+      }
+
+      const cleanExamKey = cleanTitleForMatch(examTitle);
+      const todayDate = new Date().toISOString().split('T')[0];
+
+      try {
+        await fetch(`${FIREBASE_DB_URL}/ranks/${cleanExamKey}/${payload.phone}.json`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: payload.name,
+            phone: payload.phone,
+            score: payload.score,
+            date: todayDate
+          })
+        });
+
+        await fetch(`${FIREBASE_DB_URL}/users_history/${payload.phone}.json`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            title: examTitle,
+            score: payload.score,
+            correct: payload.correct,
+            wrong: payload.wrong,
+            skipped: payload.skipped,
+            date: todayDate,
+            timestamp: Date.now()
+          })
+        });
+
+        statusDiv.innerText = "✓ മാർക്ക് ഫയർബേസിൽ വിജയകരമായി രേഖപ്പെടുത്തി!";
+        statusDiv.className = "text-xs text-emerald-400 mb-4";
+      } catch (err) {
+        statusDiv.innerText = "ഡാറ്റ സേവ് ചെയ്യുന്നതിൽ ചെറിയ തടസ്സം നേരിട്ടു.";
+        statusDiv.className = "text-xs text-rose-400 mb-4";
+      }
     }
 
     function setupClickableReviewCards() {
@@ -873,13 +889,9 @@
           let optsMarkup = '<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2">';
           q.options.forEach((opt, oIdx) => {
             let optClass = 'p-2 rounded-lg border flex items-center space-x-2 text-xs ';
-            if (oIdx === q.ans) {
-              optClass += 'border-emerald-500 bg-emerald-950/40 text-emerald-300 font-semibold';
-            } else if (oIdx === uAns && !isCorrect) {
-              optClass += 'border-rose-500 bg-rose-950/40 text-rose-300 line-through';
-            } else {
-              optClass += 'border-slate-800 text-slate-400';
-            }
+            if (oIdx === q.ans) optClass += 'border-emerald-500 bg-emerald-950/40 text-emerald-300 font-semibold';
+            else if (oIdx === uAns && !isCorrect) optClass += 'border-rose-500 bg-rose-950/40 text-rose-300 line-through';
+            else optClass += 'border-slate-800 text-slate-400';
             optsMarkup += `<div class="${optClass}"><span>${letters[oIdx]})</span><span>${opt}</span></div>`;
           });
           optsMarkup += '</div>';
@@ -909,10 +921,7 @@
         }
       });
 
-      if (count === 0) {
-        list.innerHTML = `<p class="py-4 text-center text-slate-400 text-xs">ഈ വിഭാഗത്തിൽ ചോദ്യങ്ങൾ ഒന്നുമില്ല.</p>`;
-      }
-
+      if (count === 0) list.innerHTML = `<p class="py-4 text-center text-slate-400 text-xs">ഈ വിഭാഗത്തിൽ ചോദ്യങ്ങൾ ഒന്നുമില്ല.</p>`;
       area.scrollIntoView({ behavior: 'smooth' });
     }
 
@@ -920,74 +929,28 @@
       document.getElementById('filterReviewArea').classList.add('hidden');
     };
 
-    function openFeedbackModal() {
-      document.getElementById('feedbackModal').classList.remove('hidden');
-    }
+    function openFeedbackModal() { document.getElementById('feedbackModal').classList.remove('hidden'); }
 
-    function recordFeedbackAndOpenDownload(feedbackVal) {
+    // 🌟 ഫീഡ്ബാക്ക് ഫയർബേസിലേക്ക് അയക്കുന്നു
+    async function recordFeedbackAndOpenDownload(feedbackVal) {
       document.getElementById('feedbackModal').classList.add('hidden');
-      sendFeedbackToGoogleSheet(currentUser.phone, feedbackVal);
-      if (ORIGINAL_PDF_URL) {
-        window.open(ORIGINAL_PDF_URL, '_blank');
-      } else {
-        alert('ഔദ്യോഗിക PDF ലിങ്ക് ഉടൻ ലഭ്യമാക്കുന്നതാണ്.');
+      if (currentUser.phone && currentUser.phone !== "0000000000") {
+        try {
+          await fetch(`${FIREBASE_DB_URL}/feedbacks.json`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              exam: examTitle,
+              phone: currentUser.phone,
+              name: currentUser.name,
+              feedback: feedbackVal,
+              date: new Date().toISOString().split('T')[0]
+            })
+          });
+        } catch (e) {}
       }
-    }
-
-    function sendResultToGoogleSheet(payload) {
-      const statusDiv = document.getElementById('sheetStatus');
-      if (!GOOGLE_SHEET_WEBAPP_URL || GOOGLE_SHEET_WEBAPP_URL.includes("YOUR_APPS_SCRIPT_WEBAPP_URL_HERE")) {
-        statusDiv.innerText = "Google Sheet ലിങ്ക് നൽകിയിട്ടില്ല (മാർക്ക് മുകളിൽ ലഭ്യമാണ്).";
-        statusDiv.classList.remove('animate-pulse');
-        return;
-      }
-
-      payload.sheetName = QUIZ_SHEET_NAME;
-
-      fetch(GOOGLE_SHEET_WEBAPP_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      })
-      .then(() => {
-        statusDiv.innerText = `✓ മാർക്ക് '${QUIZ_SHEET_NAME}' എന്ന ഷീറ്റ് ടാബിലേക്ക് രേഖപ്പെടുത്തി!`;
-        statusDiv.className = "text-xs text-cyan-400 mb-4";
-      })
-      .catch(() => {
-        statusDiv.innerText = "ഡാറ്റ സേവ് ചെയ്യുന്നതിൽ ചെറിയ തടസ്സം നേരിട്ടു.";
-        statusDiv.className = "text-xs text-rose-400 mb-4";
-      });
-    }
-
-    function sendReportQuestionToGoogleSheet(qNum, reason) {
-      if (!GOOGLE_SHEET_WEBAPP_URL || GOOGLE_SHEET_WEBAPP_URL.includes("YOUR_APPS_SCRIPT_WEBAPP_URL_HERE")) return;
-      fetch(GOOGLE_SHEET_WEBAPP_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          action: "report_question",
-          sheetName: QUIZ_SHEET_NAME,
-          questionNumber: qNum,
-          reason: reason
-        })
-      });
-    }
-
-    function sendFeedbackToGoogleSheet(phone, feedback) {
-      if (!GOOGLE_SHEET_WEBAPP_URL || GOOGLE_SHEET_WEBAPP_URL.includes("YOUR_APPS_SCRIPT_WEBAPP_URL_HERE")) return;
-      fetch(GOOGLE_SHEET_WEBAPP_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          action: "submit_feedback",
-          sheetName: QUIZ_SHEET_NAME,
-          phone: phone,
-          feedback: feedback
-        })
-      });
+      if (ORIGINAL_PDF_URL) window.open(ORIGINAL_PDF_URL, '_blank');
+      else alert('ഔദ്യോഗിക PDF ലിങ്ക് ഉടൻ ലഭ്യമാക്കുന്നതാണ്.');
     }
 
     function renderReviewOnlySolutions() {
@@ -1117,7 +1080,8 @@
       });
     });
 
-    function fetchLiveLeaderboard() {
+    // 🌟 ഫയർബേസിൽ നിന്ന് ലൈവ് റാങ്ക് ലിസ്റ്റ് എടുത്തു കാണിക്കുന്നു
+    async function fetchLiveLeaderboard() {
       const modal = document.getElementById('leaderboardModal');
       const loader = document.getElementById('leaderboardLoading');
       const wrapper = document.getElementById('leaderboardTableWrapper');
@@ -1128,73 +1092,40 @@
       wrapper.classList.add('hidden');
       tbody.innerHTML = '';
 
-      if (!GOOGLE_SHEET_WEBAPP_URL || GOOGLE_SHEET_WEBAPP_URL.includes("YOUR_APPS_SCRIPT_WEBAPP_URL_HERE")) {
-        loader.innerText = "Google Apps Script URL സെറ്റ് ചെയ്തിട്ടില്ല.";
-        return;
-      }
+      const cleanKey = cleanTitleForMatch(examTitle);
 
-      fetch(`${GOOGLE_SHEET_WEBAPP_URL}?sheet=${encodeURIComponent(QUIZ_SHEET_NAME)}&_t=${Date.now()}`)
-        .then(res => res.json())
-        .then(data => {
-          loader.classList.add('hidden');
-          wrapper.classList.remove('hidden');
+      try {
+        const res = await fetch(`${FIREBASE_DB_URL}/ranks/${cleanKey}.json`);
+        const data = await res.json();
+        loader.classList.add('hidden');
+        wrapper.classList.remove('hidden');
 
-          const rawList = Array.isArray(data) ? data : (data.leaderboard || []);
+        if (!data) {
+          tbody.innerHTML = '<tr><td colspan="4" class="py-6 text-center text-slate-500">ഇതുവരെ ആരും പരീക്ഷ പൂർത്തിയാക്കിയിട്ടില്ല.</td></tr>';
+          return;
+        }
 
-          if (!rawList || rawList.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="4" class="py-6 text-center text-slate-500">ഇതുവരെ ആരും പരീക്ഷ പൂർത്തിയാക്കിയിട്ടില്ല.</td></tr>';
-            return;
-          }
+        let ranks = Object.values(data);
+        ranks.sort((a, b) => Number(b.score || 0) - Number(a.score || 0));
 
-          const seenPhones = new Set();
-          const uniqueLeaderboard = [];
+        ranks.forEach((entry, idx) => {
+          let phoneStr = String(entry.phone || '').replace(/[^0-9]/g, '');
+          if (phoneStr.length >= 10) phoneStr = phoneStr.slice(-10);
+          const masked = (phoneStr && phoneStr.length >= 5) ? phoneStr.substring(0, 5) + '*****' : '---';
 
-          rawList.forEach((entry, index) => {
-            let cleanPhone = String(entry.phone || '').replace(/[^0-9]/g, '');
-            if (cleanPhone.length >= 10) {
-              cleanPhone = cleanPhone.slice(-10);
-            }
-
-            if (cleanPhone && cleanPhone !== "0000000000") {
-              if (!seenPhones.has(cleanPhone)) {
-                seenPhones.add(cleanPhone);
-                entry.originalIndex = index;
-                uniqueLeaderboard.push(entry);
-              }
-            } else {
-              entry.originalIndex = index;
-              uniqueLeaderboard.push(entry);
-            }
-          });
-
-          uniqueLeaderboard.sort((a, b) => {
-            const scoreDiff = parseFloat(b.score) - parseFloat(a.score);
-            if (scoreDiff !== 0) return scoreDiff;
-            return a.originalIndex - b.originalIndex;
-          });
-
-          uniqueLeaderboard.forEach((entry, idx) => {
-            let phoneStr = String(entry.phone || '').replace(/[^0-9]/g, '');
-            if (phoneStr.length >= 10) phoneStr = phoneStr.slice(-10);
-            
-            const masked = (phoneStr && phoneStr.length >= 5) 
-              ? phoneStr.substring(0, 5) + '*****' 
-              : '---';
-
-            const row = document.createElement('tr');
-            row.className = 'hover:bg-slate-700/30 text-slate-300';
-            row.innerHTML = `
-              <td class="py-2.5 px-3 font-mono font-bold">${idx + 1}</td>
-              <td class="py-2.5 px-3 font-medium">${entry.name}</td>
-              <td class="py-2.5 px-3 font-mono text-xs text-slate-400">${masked}</td>
-              <td class="py-2.5 px-3 text-right font-mono font-bold text-cyan-400">${Number(entry.score).toFixed(2)}</td>
-            `;
-            tbody.appendChild(row);
-          });
-        })
-        .catch(() => {
-          loader.innerText = "റാങ്ക് ലിസ്റ്റ് ലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല. ദയവായി അല്പം കഴിഞ്ഞ് ശ്രമിക്കുക.";
+          const row = document.createElement('tr');
+          row.className = 'hover:bg-slate-700/30 text-slate-300';
+          row.innerHTML = `
+            <td class="py-2.5 px-3 font-mono font-bold">${idx + 1}</td>
+            <td class="py-2.5 px-3 font-medium">${entry.name || 'വിദ്യാർത്ഥി'}</td>
+            <td class="py-2.5 px-3 font-mono text-xs text-slate-400">${masked}</td>
+            <td class="py-2.5 px-3 text-right font-mono font-bold text-cyan-400">${Number(entry.score || 0).toFixed(2)}</td>
+          `;
+          tbody.appendChild(row);
         });
+      } catch (e) {
+        loader.innerText = "റാങ്ക് ലിസ്റ്റ് ലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല. ദയവായി അല്പം കഴിഞ്ഞ് ശ്രമിക്കുക.";
+      }
     }
 
     function closeLeaderboard() {
